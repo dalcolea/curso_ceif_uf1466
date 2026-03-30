@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // tipos de variables    
+        let nombre = "Juan";
+        let edad = 30;
+        let esEstudiante = true;
+        let fechaNacimiento = new Date("1990-01-01");
+        let lista = [1, 2, 3, 4, 5];
+        let persona = {
+            nombre: "Maria",
+            edad: 25
+        };  
+
+        // constantes
+        const PI = 3.14159;
+
+        // tipos de datos
+        let numero = 42; // number  
+        let texto = "Hola, mundo!"; // string
+        let booleano = false; // boolean
+        let indefinido; // undefined
+        let nulo = null; // null
+        let simbolo = Symbol("simbolo"); // symbol
+
+        console.log(typeof nombre); // string
+        console.log(typeof edad); // number 
+        console.log(typeof esEstudiante); // boolean
+        console.log(typeof fechaNacimiento); // object
+        console.log(typeof lista); // object
+        console.log(typeof persona); // object
+
+        // operaciones artiméticas
+        let a = 10;
+        let b = 5;
+        let suma = a + b;
+        let resta = a - b;
+        let multiplicacion = a * b;
+        let division = a / b;
+        let modulo = a % b;
+
+        // comparaciones
+        let esMayor = a > b; // true    
+        let esMenor = a < b; // false
+        let esIgual = a == b; // false
+        let esIdentico = a === b; // false
+        let esDiferente = a != b; // true
+        let esNoIdentico = a !== b; // true
+
+        // raiz cuadrada
+        let raizCuadrada = Math.sqrt(16); // 4
+
+        // potencia
+        let potencia = Math.pow(2, 3); // 8, también se puede utilizar el operador **: let potencia = 2 ** 3;
+        let raizCubica = Math.cbrt(27); // 3
+
+        // redondeos
+        let valorAbsoluto = Math.abs(-5); // 5
+        let redondeo = Math.round(4.7); // 5
+        let techo = Math.ceil(4.2); // 5
+        let piso = Math.floor(4.8); // 4
+
+        // numero aleatorio y maximo y minimo
+        let aleatorio = Math.random(); // número aleatorio entre 0 y 1
+        let maximo = Math.max(1, 2, 3, 4, 5); // 5
+        let minimo = Math.min(1, 2, 3, 4, 5); // 1
+
+        // concatenación de cadenas
+        let saludo = "Hola, " + nombre + "!"; // "Hola, Juan!"  
+        let mensaje = `Hola, ${nombre}! Tienes ${edad} años.`; // "Hola, Juan! Tienes 30 años."
+
+        // booleanos y operadores lógicos
+        let esAdulto = edad >= 18; // true  
+        let esJoven = edad < 30; // false
+        let esMayorDeEdad = esAdulto && !esJoven; // true
+        let esMenorDeEdad = !esAdulto; // false
+        let puedeVotar = esAdulto && edad >= 18; // true
+
+        // prompt y alert
+        let nombreUsuario = prompt("¿Cuál es tu nombre?"); // Solicita al usuario su nombre
+        alert(`Hola, ${nombreUsuario}! Bienvenido a JavaScript.`); // Muestra un mensaje de bienvenida al usuario
+
+        // conversion de tipos
+        let numeroString = "123";   
+        let numeroConvertido = Number(numeroString); // 123
+        let booleanoString = "true";
+        let booleanoConvertido = (booleanoString === "true"); // true
+        
+        // operadores unarios
+        let contador = 0;
+        contador++; // Incrementa el contador en 1
+        contador--; // Decrementa el contador en 1
+        contador += 5; // Incrementa el contador en 5
+        contador -= 3; // Decrementa el contador en 3
+        contador *= 2; // Multiplica el contador por 2
+        contador /= 4; // Divide el contador entre 4
+        contador %= 3; // Calcula el resto de la división del contador entre 3
+
+        // condicionales
+        if (edad >= 18) {
+            console.log("Eres mayor de edad.");
+        } else {
+            console.log("Eres menor de edad.");
+        }
+
+        // ternario
+        let mensajeEdad = (edad >= 18) ? "Eres mayor de edad." : "Eres menor de edad.";
+        console.log(mensajeEdad);
+
+        
+
+    </script>
+</body>
+</html>
