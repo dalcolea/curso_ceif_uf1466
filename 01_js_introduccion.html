@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // tipos de variables    
+        let nombre = "Juan";
+        let edad = 30;
+        let esEstudiante = true;
+        let fechaNacimiento = new Date("1990-01-01");
+        let lista = [1, 2, 3, 4, 5];
+        let persona = {
+            nombre: "Maria",
+            edad: 25
+        };  
+
+        // constantes
+        const PI = 3.14159;
+
+        // tipos de datos
+        let numero = 42; // number  
+        let texto = "Hola, mundo!"; // string
+        let booleano = false; // boolean
+        let indefinido; // undefined
+        let nulo = null; // null
+        let simbolo = Symbol("simbolo"); // symbol
+
+        console.log(typeof nombre); // string
+        console.log(typeof edad); // number 
+        console.log(typeof esEstudiante); // boolean
+        console.log(typeof fechaNacimiento); // object
+        console.log(typeof lista); // object
+        console.log(typeof persona); // object
+        
+        // operaciones artiméticas
+        let a = 10;
+        let b = 5;
+        let suma = a + b;
+        let resta = a - b;
+        let multiplicacion = a * b;
+        let division = a / b;
+        let modulo = a % b;
+
+        // comparaciones
+        let esMayor = a > b; // true    
+        let esMenor = a < b; // false
+        let esIgual = a == b; // false
+        let esIdentico = a === b; // false
+        let esDiferente = a != b; // true
+        let esNoIdentico = a !== b; // true
+
+        // raiz cuadrada
+        let raizCuadrada = Math.sqrt(16); // 4
+
+        // potencia
+        let potencia = Math.pow(2, 3); // 8, también se puede utilizar el operador **: let potencia = 2 ** 3;
+        let raizCubica = Math.cbrt(27); // 3
+
+        // redondeos
+        let valorAbsoluto = Math.abs(-5); // 5
+        let redondeo = Math.round(4.7); // 5
+        let techo = Math.ceil(4.2); // 5
+        let piso = Math.floor(4.8); // 4
+
+        // numero aleatorio y maximo y minimo
+        let aleatorio = Math.random(); // número aleatorio entre 0 y 1
+        let maximo = Math.max(1, 2, 3, 4, 5); // 5
+        let minimo = Math.min(1, 2, 3, 4, 5); // 1
+
+        // concatenación de cadenas
+        let saludo = "Hola, " + nombre + "!"; // "Hola, Juan!"  
+        let mensaje = `Hola, ${nombre}! Tienes ${edad} años.`; // "Hola, Juan! Tienes 30 años."
+
+        // booleanos y operadores lógicos
+        let esAdulto = edad >= 18; // true  
+        let esJoven = edad < 30; // false
+        let esMayorDeEdad = esAdulto && !esJoven; // true
+        let esMenorDeEdad = !esAdulto; // false
+        let puedeVotar = esAdulto && edad >= 18; // true
+
+        // prompt y alert
+        let nombreUsuario = prompt("¿Cuál es tu nombre?"); // Solicita al usuario su nombre
+        alert(`Hola, ${nombreUsuario}! Bienvenido a JavaScript.`); // Muestra un mensaje de bienvenida al usuario
+
+        // conversion de tipos
+        let numeroString = "123";   
+        let numeroConvertido = Number(numeroString); // 123
+        let booleanoString = "true";
+        let booleanoConvertido = (booleanoString === "true"); // true
+        
+        // operadores unarios
+        let contador = 0;
+        contador++; // Incrementa el contador en 1
+        contador--; // Decrementa el contador en 1
+        contador += 5; // Incrementa el contador en 5
+        contador -= 3; // Decrementa el contador en 3
+        contador *= 2; // Multiplica el contador por 2
+        contador /= 4; // Divide el contador entre 4
+        contador %= 3; // Calcula el resto de la división del contador entre 3
+
+        // condicionales
+        if (edad >= 18) {
+            console.log("Eres mayor de edad.");
+        } else {
+            console.log("Eres menor de edad.");
+        }
+
+        // condicionales anidados
+        if (edad < 14) {
+            console.log("Eres un niño.");
+        } else if (edad >= 14 && edad < 18) {
+            console.log("Eres un adolescente.");
+        } else {
+            console.log("Eres un adulto.");
+        }
+
+        // switch
+        let diaSemana = 3;  
+        switch (diaSemana) {
+            case 1:
+                console.log("Lunes");
+                break;
+            case 2:
+                console.log("Martes");
+                break;
+            case 3:
+                console.log("Miércoles");
+                break;
+            case 4:
+                console.log("Jueves");
+                break;
+            case 5:
+                console.log("Viernes");
+                break;
+            case 6:
+                console.log("Sábado");
+                break;
+            case 7:
+                console.log("Domingo");
+                break;
+            default:
+                console.log("Número de día no válido.");
+        }
+
+        // condicional ternario
+        let mensajeEdad = (edad >= 18) ? "Eres mayor de edad." : "Eres menor de edad.";
+        console.log(mensajeEdad);
+
+        // condicional ternario anidado
+        let mensajeEdadAnidado = (edad < 14) ? "Eres un niño." : (edad >= 14 && edad < 18) ? "Eres un adolescente." : "Eres un adulto.";
+        console.log(mensajeEdadAnidado);
+
+        let ind = a === b ? 0: a < b ? -1 : 1; // -1, 0 o 1 dependiendo de la comparación entre a y b
+        console.log('ind', ind);
+
+        // valores que evaluan como false
+        let valorFalso1 = false;
+        let valorFalso2 = 0;
+        let valorFalso3 = "";
+        let valorFalso4 = null;
+        let valorFalso5 = undefined;
+        let valorFalso6 = NaN;
+        console.log(Boolean(valorFalso1)); // false
+        console.log(Boolean(valorFalso2)); // false
+        console.log(Boolean(valorFalso3)); // false
+        console.log(Boolean(valorFalso4)); // false
+        console.log(Boolean(valorFalso5)); // false
+        console.log(Boolean(valorFalso6)); // false
+
+        // operador lógico OR para valores por defecto
+        let nombreUsuario2 = null;
+        let nombreFinal = nombreUsuario2 || "Usuario desconocido"; // "Usuario desconocido"
+        console.log(nombreFinal);
+
+        // operador de fusión nula
+        let valor = null;
+        let resultado = valor ?? "Valor por defecto"; // "Valor por defecto"
+        console.log(resultado);
+
+        // operador de encadenamiento opcional en atributos de objetos
+        let persona2 = {
+            nombre: "Carlos",
+            direccion: {
+                ciudad: "Madrid"
+            }
+        };
+        console.log(persona2?.direccion?.ciudad); // "Madrid"
+        console.log(persona2?.direccion?.pais); // undefined
+
+        // bucle for
+        for (let i = 0; i < 5; i++) {
+            console.log(i);
+        }
+
+        // for con break y continue
+        for (let i = 0; i < 10; i++) {
+            if (i === 3) {
+                continue; // Salta el número 3
+            }
+            if (i === 7) {
+                break; // Detiene el bucle cuando i es igual a 7
+            }
+            console.log(i);
+        }   
+
+        // otros bucles
+        let j = 0;
+        while (j < 5) {
+            console.log(j);
+            j++;
+        }
+
+        let k = 0;
+        do {
+            console.log(k);
+            k++;
+        } while (k < 5);
+
+        // bucle for...of
+        let frutas = ["manzana", "banana", "naranja"];
+        for (let fruta of frutas) {
+            console.log(fruta);
+        }
+
+        // bucle for...in
+        let persona3 = {
+            nombre: "Juan",
+            edad: 30,
+            ciudad: "Madrid"
+        };
+        for (let clave in persona3) {
+            console.log(`${clave}: ${persona3[clave]}`);
+        }
+
+        // forzar minusculas
+        let textoOriginal = "Hola Mundo";   
+        let textoMinusculas = textoOriginal.toLowerCase(); // "hola mundo"
+        console.log(textoMinusculas);
+
+        // forzar mayusculas    
+        let textoMayusculas = textoOriginal.toUpperCase(); // "HOLA MUNDO"
+        console.log(textoMayusculas);
+
+        // eliminar espacios en blanco al inicio y al final
+        let textoConEspacios = "   Hola Mundo   ";  
+        let textoSinEspacios = textoConEspacios.trim(); // "Hola Mundo"
+        console.log(textoSinEspacios);
+
+        // reemplazar parte de una cadena
+        let textoReemplazado = textoOriginal.replace("Mundo", "JavaScript"); // "Hola JavaScript"
+        console.log(textoReemplazado);
+
+        // verificar si valor numerico es entero
+        let numero1 = 42;   
+        let numero2 = 3.14;
+        console.log(Number.isInteger(numero1)); // true
+        console.log(Number.isInteger(numero2)); // false
+
+        //verificar si un valor es numérico
+        let valor1 = "123";
+        let valor2 = "abc";
+        console.log(!isNaN(valor1)); // true
+        console.log(!isNaN(valor2)); // false   
+
+        // verificar si un valor es un array
+        let array1 = [1, 2, 3];
+        let array2 = "no es un array";
+        console.log(Array.isArray(array1)); // true
+        console.log(Array.isArray(array2)); // false
+
+        // verificar si un valor es un objeto
+        let objeto1 = { nombre: "Juan" };
+        let objeto2 = "no es un objeto";
+        console.log(typeof objeto1 === "object" && objeto1 !== null); // true
+        console.log(typeof objeto2 === "object" && objeto2 !== null); // false
+
+        // arrays
+        let numerosArray = [1, 2, 3, 4, 5];
+        console.log(numerosArray.length); // 5
+        console.log(numerosArray[0]); // 1
+        console.log(numerosArray[4]); // 5  
+
+        // funciones
+        function saludar(nombre) {
+            return `Hola, ${nombre}!`;
+        }
+        console.log(saludar("Ana")); // "Hola, Ana!"
+
+        // funciones anónimas
+        let despedir = function(nombre) {
+            return `Adiós, ${nombre}!`;
+        };
+        console.log(despedir("Ana")); // "Adiós, Ana!"
+        
+        // funciones flecha
+        let multiplicar = (a, b) => a * b;
+        console.log(multiplicar(3, 4)); // 12
+
+        // funciones flecha con un solo parámetro
+        let cuadrado = x => x * x;  
+        console.log(cuadrado(5)); // 25
+
+        // funciones flecha sin parámetros
+        let obtenerFechaActual = () => new Date();
+        console.log(obtenerFechaActual()); // Muestra la fecha y hora actual
+
+        // funciones flecha con cuerpo de función
+        let calcularAreaRectangulo = (base, altura) => {
+            let area = base * altura;
+            return area;
+        };
+        console.log(calcularAreaRectangulo(5, 10)); // 50
+
+        // evaluar el mayor de tres números
+        let mayorDeTres = (a, b, c) => {
+            if (a >= b && a >= c) {
+                return a;
+            } else if (b >= a && b >= c) {
+                return b;
+            } else {
+                return c;
+            }
+        };
+        console.log(mayorDeTres(5, 10, 3)); // 10
+
+        // operador de propagación (no modifica el array original)
+        let numeros = [1, 2, 3];    
+        let masNumeros = [...numeros, 4, 5]; // [1, 2, 3, 4, 5]
+        console.log(masNumeros);
+
+
+    </script>
+</body>
+</html>
