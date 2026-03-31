@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Crea un programa que:
+        1. Recorra los números del 1 al 20
+        2. Para cada número:
+            ○ Si es múltiplo de 3 → muestra "Fizz"
+            ○ Si es múltiplo de 5 → muestra "Buzz"
+            ○ Si es múltiplo de ambos → "FizzBuzz"
+            ○ Si no → muestra el número
+        */
+       
+        let numMax = Number(prompt("Ingrese un número máximo:"));
+
+        for (let i = 1; i <= numMax; i++) {
+            if (i % 3 === 0 && i % 5 === 0) {
+                console.log("FizzBuzz");
+            } else if (i % 3 === 0) {
+                console.log("Fizz");
+            } else if (i % 5 === 0) {
+                console.log("Buzz");
+            } else {
+                console.log(i);
+            }
+        }
+    </script>
+</body>
+</html>

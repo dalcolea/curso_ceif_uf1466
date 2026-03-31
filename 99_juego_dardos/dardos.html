@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //inicializar variables
+        let jugadores = [];
+        let maxJugadores = 4;
+        let numRondas = 3;
+        let ganadores = [];
+        let maxPuntos = 121;
+
+        //solicitar el nombre de los jugadores
+        for (let i = 0; i < maxJugadores; i++) {
+            let nombre = prompt(`Ingrese el nombre del jugador ${i + 1}:`);
+            if (nombre) {
+                jugadores.push({ nombre: nombre, puntos: maxPuntos });
+            }
+        }
+
+        //comenzar las rondas del juego
+        for (let ronda = 1; ronda <= numRondas; ronda++) {
+            alert(`Ronda ${ronda} - Comienza el juego!`);
+            for (let jugador of jugadores) {
+                let puntos = parseInt(prompt(`${jugador.nombre}, ingresa tus puntos para esta ronda:`));
+                if (!isNaN(puntos)) {
+                    jugador.puntos -= puntos;
+                    if (jugador.puntos <= 0) {
+                        jugador.puntos = 0; // Evitar puntos negativos
+                        ganadores.push({ nombre: jugador.nombre, puntos: jugador.puntos });
+                    }
+                }
+            }
+
+            //comprobar si hay ganadores en esta ronda
+            if (ganadores.length > 0) {
+                alert(`Ganadores de la ronda ${ronda}: ${ganadores.map(g => g.nombre).join(', ')}`);
+                break; // Terminar el juego si hay ganadores
+            }
+        }
+
+        //si no hay ganadores después de todas las rondas, se muestra un mensaje
+        if (ganadores.length === 0) {
+            alert('No hay ganadores después de todas las rondas. ¡Inténtalo de nuevo!');
+        }   
+    </script>
+</body>
+</html>
