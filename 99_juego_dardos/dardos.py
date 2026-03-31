@@ -25,8 +25,8 @@ for ronda in range(1, num_rondas + 1):
                 ganadores.append({"nombre": jugador["nombre"], "puntos": jugador["puntos"]})
 
     if ganadores:
-        print(f"Ganadores de la ronda {ronda}: {', '.join(g['nombre'] for g in ganadores)}")
+        print(f"Ganadores de la ronda {ronda}: {', '.join(ganador['nombre'] for ganador in ganadores)}")
         break
 
 if not ganadores:
-    print("No hay ganadores después de todas las rondas. ¡Inténtalo de nuevo!")
+    print(f"No hay ganadores después de las {num_rondas} rondas. ¡Inténtalo de nuevo!")
