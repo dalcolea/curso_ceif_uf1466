@@ -1,0 +1,7 @@
+section {
+    box-shadow: 2px 2px 5px grey !important;
+}
+
+th, td {
+    vertical-align: center !important;
+}

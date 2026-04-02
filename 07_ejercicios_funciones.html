@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        EJEMPLO DE CLOSURE
+
+        1. Crea una función llamada crearSesion
+        2. Dentro, declara una variable usuario con valor inicial "Invitado"
+        3. Devuelve una función que:
+            ○ permita cambiar el nombre del usuario
+            ○ devuelva el nombre actual
+        4. Comprueba que el nombre se recuerda entre llamadas
+        */
+        const crearSesion = () => {
+            let usuario = 'Invitado'
+
+            return (nuevoUsuario) => {
+                if (nuevoUsuario) usuario = nuevoUsuario;
+                return usuario
+            }
+        }
+
+        const asignarSesion = crearSesion()
+
+        console.log(asignarSesion())
+        console.log(asignarSesion('David'))
+        console.log(asignarSesion())
+        console.log(asignarSesion('Ana'))
+
+        /*
+        EJEMPLO CALLBACK
+ 
+         1. Crea una función llamada procesarNumero
+         2. La función debe recibir:
+             ○ un número
+             ○ una función callback
+         3. Dentro de procesarNumero:
+             ○ muestra el número original
+             ○ ejecuta la callback pasando el número
+         4. Usa la función pasando:
+             ○ una callback que calcule el doble
+             ○ otra callback que calcule el cuadrado
+        */
+
+        function procesarNumero(numero, callback) {
+            console.log("Número original:", numero);
+            
+            console.log("Resultado callback:", callback(numero));
+        }
+
+        procesarNumero(4, (num) => num * 2);
+        procesarNumero(4, (num) => num ** 2);
+
+    </script>
+</body>
+
+</html>

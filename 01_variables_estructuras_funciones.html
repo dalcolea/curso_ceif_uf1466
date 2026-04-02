@@ -289,36 +289,87 @@
         console.log(numerosArray[0]); // 1
         console.log(numerosArray[4]); // 5  
 
-        // funciones
+        // funciones declaradas (con hoisting)
         function saludar(nombre) {
             return `Hola, ${nombre}!`;
         }
         console.log(saludar("Ana")); // "Hola, Ana!"
 
-        // funciones anónimas
-        let despedir = function(nombre) {
+        // funciones expresadas o asignadas a una variable (sin hoisting)
+        const despedir = function(nombre) {
             return `Adiós, ${nombre}!`;
         };
         console.log(despedir("Ana")); // "Adiós, Ana!"
         
-        // funciones flecha
+        // funciones con parámetros opcionales
+        function saludarAlias(nombre, alias="sin alias") {
+            return `Hola ${nombre} con alias ${alias}`
+        }
+        console.log('Nombre: ', saludarAlias('David')) 
+
+        // funciones que retornan un valor para ser utilizado fuera de ella
+        let calcularAreaTriangulo = (base, altura) => {
+            let area = (base * altura)/2;
+            return area;
+        };
+        let area = calcularAreaTriangulo(5, 10)
+        console.log('Area triangulo: ',area)
+
+        // función que retorna una variable no declarada(ojito con el Hoisting de JS!)
+        function calcularIva(precio) {
+            precioConIva = precio * 1.21
+            return precioConIva
+        }
+
+        calcularIva(100)
+
+        console.log ('Precio con IVA: ', precioConIva)
+
+        //funciones callback
+        function hacerAlgo(nombre) {
+            console.log("Hola " + nombre);
+        }
+
+        function procesarEntradaUsuario(callback) {
+            let nombre = "Juan"; // Supongamos que viene de un prompt
+            callback(nombre); // Ejecuta la función callback recibida
+        }
+
+        procesarEntradaUsuario(hacerAlgo); // "Hola Juan"
+                
+        // funciones flecha y return implicito
         let multiplicar = (a, b) => a * b;
         console.log(multiplicar(3, 4)); // 12
 
-        // funciones flecha con un solo parámetro
+        // funciones flecha con un solo parámetro y return implicito
         let cuadrado = x => x * x;  
         console.log(cuadrado(5)); // 25
 
-        // funciones flecha sin parámetros
+        // funciones flecha sin parámetros y return implicito
         let obtenerFechaActual = () => new Date();
         console.log(obtenerFechaActual()); // Muestra la fecha y hora actual
 
-        // funciones flecha con cuerpo de función
+        // funciones flecha con cuerpo de función sin return implicito
         let calcularAreaRectangulo = (base, altura) => {
             let area = base * altura;
             return area;
         };
         console.log(calcularAreaRectangulo(5, 10)); // 50
+
+        // función con closure
+        const sumarContador = () => {
+            let contador = 0
+
+            //closure
+            return () => ++contador
+        }
+
+        const miContador = sumarContador()
+
+        console.log('Contador: ', miContador())
+        console.log('Contador: ', miContador())
+        console.log('Contador: ', miContador())
+
 
         // evaluar el mayor de tres números
         let mayorDeTres = (a, b, c) => {
@@ -342,6 +393,10 @@
         console.log(frutasArray.includes("banana")); // true
         console.log(frutasArray.includes("pera")); // false
         
+        //temporizadores (ejecutar una función transcurrido un tiempo)
+        setTimeout(() => {
+            console.log('han pasado tres segundos')
+        },3000)
 
     </script>
 </body>

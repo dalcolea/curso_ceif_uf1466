@@ -1,0 +1,6 @@
+EJERCICIO 1
+
+2. Es preferible no utilizar "" para numéricos
+5. preguntar por "true" es preguntar por un string y no por un booleano
+8. texto no encerrado entre ""
+12 concatenará en vez de sumar

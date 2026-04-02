@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arrays</title>
+</head>
+<body>
+    <script>
+        // array escalar
+        let arr = [1, 2, 3, 4, 5];
+        console.log(arr[0]); // 1
+        console.log(arr[1]); // 2
+        console.log(arr[2]); // 3
+        console.log(arr[3]); // 4
+        console.log(arr[4]); // 5
+
+        arr.push(6);
+        console.log(arr); // [1, 2, 3, 4, 5, 6]
+
+        arr.pop();
+        console.log(arr); // [1, 2, 3, 4, 5]
+
+        arr.unshift(0);
+        console.log(arr); // [0, 1, 2, 3, 4, 5]
+
+        arr.shift();
+        console.log(arr); // [1, 2, 3, 4, 5]
+
+        // array de objetos
+        let arrObj = [
+            { name: 'Alice', age: 30 },
+            { name: 'Bob', age: 25 },
+            { name: 'Charlie', age: 35 }
+        ];
+        console.log(arrObj[0].name); // Alice
+        console.log(arrObj[1].age); // 25
+        console.log(arrObj[2].name); // Charlie
+        console.log(arrObj[2].age); // 35   
+
+       // array multidimensional inmutable
+       const arrMulti = [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]
+        ];
+        console.log(arrMulti[0][0]); // 1
+        console.log(arrMulti[0][1]); // 2
+        console.log(arrMulti[0][2]); // 3
+        console.log(arrMulti[1][0]); // 4
+        console.log(arrMulti[1][1]); // 5
+        console.log(arrMulti[1][2]); // 6
+        console.log(arrMulti[2][0]); // 7
+        console.log(arrMulti[2][1]); // 8
+        console.log(arrMulti[2][2]); // 9
+
+        arrMulti[0][0] = 10; // si se puede modificar el valor, pero no se puede reasignar el array completo
+        console.log(arrMulti[0][0]); // 10
+
+        arrMulti.push([10, 11, 12]); // si se puede agregar un nuevo array, pero no se puede reasignar el array completo
+        console.log(arrMulti); // [[10, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]
+
+        // ejemplo splice
+        let arrSplice = [1, 2, 3, 4, 5];
+
+        arrSplice.splice(3); // elimina el elemento en la posición 3 y el resto de los elementos
+        console.log(arrSplice); // [1, 2, 3]
+
+        arrSplice.splice(1, 1); // elimina el elemento en la posición 1
+        console.log(arrSplice); // [1, 3]
+
+        arrSplice.splice(1, 0, 2); // agrega el elemento 2 en la posición 1        
+        console.log(arrSplice); // [1, 2, 3]
+
+        // array colores    
+        let arrColores = ['rojo', 'verde', 'azul'];
+        console.log(arrColores); // ['rojo', 'verde', 'azul']
+
+        // recorrer array colores
+        for (let i = 0; i < arrColores.length; i++) {
+            console.log(arrColores[i]); // rojo, verde, azul
+        }
+
+        // recorrer array colores con for...of
+        for (let color of arrColores) {
+            console.log(color); // rojo, verde, azul
+        }
+
+        // recorrer array colores con forEach
+        arrColores.forEach(color => {
+            console.log(color); // rojo, verde, azul
+        });
+
+        // recorrer array colores con map
+        arrColores.map(color => {
+            console.log(color); // rojo, verde, azul
+        });
+
+        // recorrer array colores con for...in ( no es recomendable usar for...in para recorrer arrays, ya que recorre las propiedades del objeto, no los elementos del array y puede generar resultados inesperados si el array tiene propiedades adicionales)
+        for (let index in arrColores) {
+            console.log(arrColores[index]); // rojo, verde, azul
+        }   
+
+        // programación funcional con arrays
+        let arrNums = [1, 2, 3, 4, 5];
+        // map
+        let arrDoubles = arrNums.map((num, idx) => {
+            return `${idx}, ${num * 2}`;
+        });
+        console.log(arrDoubles); // [2, 4, 6, 8, 10]
+        // filter
+        let arrEven = arrNums.filter(num => num % 2 === 0);
+        console.log(arrEven); // [2, 4]
+        // reduce   
+        let arrSum = arrNums.reduce((acc, num) => acc + num, 0);
+        console.log(arrSum); // 15
+        // find
+        let arrFind = arrNums.find(num => num > 3); 
+        console.log(arrFind); // 4
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<html>
+<head>
+	<title>Slot</title>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<div class='wraper'>
+		<section class='scores'>
+			<label>Amount</label>
+			<input type='text' id='amount'>
+			<label>Wins</label>
+			<input type='text' disabled id='win'>
+		</section><br><br>
+		<section class='display'>
+			<div class='reels'><img id='reel1' src='img/7.png'></div>
+			<div class='reels'><img id='reel2' src='img/7.png'></div>
+			<div class='reels'><img id='reel3' src='img/7.png'></div>
+		</section><br><br>
+		<section class='controls'>
+			<form>
+				<label>Bet</label>
+				<select id='bet'>
+					<option value='1'>1c</option>
+					<option value='10'>10c</option>
+					<option value='20'>20c</option>
+					<option value='40'>40c</option>
+					<option value='60'>60c</option>
+					<option value='100'>100c</option>
+					<option value='200'>200c</option>
+					<option value='500'>500c</option>
+				</select>
+				<input type='button' value='SPIN REELS' id='spin'>
+			</form>
+		</section><br>
+		<section class='paytable'>
+			<div class='columnas'>
+				<div style='clear:left'>
+					<img src="img/9.png"><img src="img/9.png"><img src="img/9.png"><span>&nbsp1000</span>
+				</div>
+				<div  style='clear:left'>
+					<img src="img/8.png"><img src="img/8.png"><img src="img/8.png"><span>&nbsp500</span>
+				</div>
+				<div style='clear:left'>
+					<img src="img/7.png"><img src="img/7.png"><img src="img/7.png"><span>&nbsp300</span>
+				</div>
+				<div style='clear:left'>
+					<img src="img/6.png"><img src="img/6.png"><img src="img/6.png"><span>&nbsp100</span>
+				</div>
+				<div style='clear:left'>
+					<img src="img/5.png"><img src="img/5.png"><img src="img/5.png"><span>&nbsp20</span>
+				</div>
+			</div>
+			<div class='columnas'>
+				<div>
+					<img src="img/4.png"><img src="img/4.png"><img src="img/4.png"><span>&nbsp10</span>
+				</div>
+				<div style='clear:left'>
+					<img src="img/3.png"><img src="img/3.png"><img src="img/3.png"><span>&nbsp5</span>
+				</div>
+				<div style='clear:left'>
+					<img src="img/2.png"><img src="img/2.png"><img src="img/2.png"><span>&nbsp3</span>
+				</div>
+				<div style='clear:left'>
+					<img src="img/1.png"><img src="img/1.png"><img src="img/1.png"><span>&nbsp2</span>
+				</div>
+				<div style='clear:left'>
+					<img src="img/0.png"><img src="img/0.png"><img src="img/0.png"><span>&nbsp1</span>
+				</div>
+			</div>
+			<div class='columnas' id='wild'>
+				<div>
+					<img src="img/9.png"><span>WILD</span>
+				</div>
+			</div>
+		</section><br><br>
+	</div>
+	<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //función para calcular el mayor de, extrictamente, tres núnmeros
+        const obtenerMayor = function(n1, n2, n3) {
+            switch (true) {
+                case n1 >= n2 && n1 >= n3:
+                    return n1
+                case n2 >= n1 && n2 >= n3:
+                    return n2
+                default: 
+                    return n3
+            }
+        }
+
+        console.log('Mayor número: ', obtenerMayor(6,6,4))
+
+        //función para obtener el menor de uno o varios números utilizando el spread operator (operador de propagación) y la sintaxis arrow function
+        const obtenerMenor = (...nums) => Math.min(...nums)
+
+        console.log('Menor número: ', obtenerMenor(6,4,6,5,2))
+
+    </script>
+</body>
+</html>

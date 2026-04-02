@@ -1,0 +1,21 @@
+A partir del documento HTML adjunto generar el código JS necesario para realizar la siguiente operativa
+
+Se introduce un importe total a jugar en el control 'Amount' del documento html y se selecciona una apuesta en la combo 'Bet'
+
+Cada vez que se pulse sobre el botón 'Spin Reels' se generará una jugada siempre y cuando el importe que quede pendiente sea mayor o igual a la apuesta seleccionada
+
+En cada jugada se generarán tres números aleatorios del 0 al 9 que corresponderán a cada una de las imagenes de la carpeta img (numeradas del 0 al 9)
+NOTA: para generar un número aleatorio del 0 al 9 utilizad: 
+Math.floor(Math.random() * 10)
+
+Se mostrarán en el documento html las tres imagenes que correspondan con los tres numeros generados (en las etiquetas img con id reel1, reel2 y reel3)
+
+Si los tres números (y por tanto las tres figuras generadas) generan un premio según la tabla que se muestra en el documento html:
+se incrementará el importe pendiente de jugar en la cantidad calculada a partir de la apuesta jugada multiplicada por el factor del premio (por ejemplo si aparecen tres campanas y la apuesta son 10c el premio será 300 x 10 = 3000)
+se mostrará el premio en la caja 'Wins'
+
+LA figura wild (numero 9) es un comodin de forma que sustituye a cualquier otra de las figuras cuando tengamos que comprobar si se ha ganado un premio. (por ejemplo: limon limon wild y sus combinaciones sería equivalente a tres limones)
+
+Tanto si hay premio como si no se restará el importe de la apuesta de la cantidad pendiente de jugar
+
+El juego acaba cuando el importe pendiente sea inferior a la apuesta
