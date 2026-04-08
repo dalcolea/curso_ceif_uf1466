@@ -37,13 +37,15 @@
                     <button type="button" class="btn btn-success" onclick="nuevoContacto('u')">Añadir urgente</button>
                     <button type="button" class="btn btn-warning" onclick="borrarContacto('u')">Deshacer último</button>
                     <button type="button" class="btn btn-dark" onclick="borrarContacto('p')">Deshacer primero</button>
+                    <button type="button" class="btn btn-warning" onclick="modificarContacto()">Modificar contacto</button>
                     <button type="button" class="btn btn-danger" onclick="borrarContactoSeleccionado()">Eliminar seleccionado</button>
+                    <button type="reset" class="btn btn-info">Limpiar</button>
                 </div>
             </form>
         </section>
-        <section class="row p-4 m-2 table-striped" id="lista">
+        <section class="row p-4 m-2" id="lista">
             <h4>Lista de Contactos</h4>
-            <table class="table col-12">
+            <table class="table col-12 table-striped">
                 <thead class="table-dark">
                     <tr>
                         <th>Nombre</th>

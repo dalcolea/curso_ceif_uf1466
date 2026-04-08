@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // json con los datos a grabar
+        const alojamientos = [
+            {
+                titulo: "Apartamento en Barcelona",
+                precio: "120€/noche",
+                img: "https://picsum.photos/400/300?1"
+            },
+            {
+                titulo: "Casa en la montaña en León",
+                precio: "90€/noche",
+                img: "https://picsum.photos/400/300?2"
+            },
+            {
+                titulo: "Villa con piscina en Alicante",
+                precio: "250€/noche",
+                img: "https://picsum.photos/400/300?3"
+            },
+            {
+                titulo: "Loft moderno en Madrid",
+                precio: "150€/noche",
+                img: "https://picsum.photos/400/300?4"
+            },
+            {
+                titulo: "Casa huertana en Murcia",
+                precio: "180€/noche",
+                img: "https://picsum.photos/400/300?5"
+            },
+            {
+                titulo: "Barraca en albufera de Valencia",
+                precio: "180€/noche",
+                img: "https://picsum.photos/400/300?6"
+            }
+        ];
+
+        // ==============================
+        // 💾 GUARDAR JSON CON NODE JS
+        // ==============================
+
+        const fs = require("fs"); //cargar el modulo FileSystem para trabajar con el sistema de archivos
+        const path = require("path"); //cargar el modulo Path para trabajar con rutas de archivos
+
+        const outputPath = path.join(__dirname, "alojamientos.json"); //definir la ruta de salida del archivo JSON (en el mismo directorio que este script)
+
+        fs.writeFileSync(outputPath, JSON.stringify(alojamientos, null, 2), "utf-8"); //escribir el archivo JSON con los datos de alojamientos, formateado con indentación de 2 espacios, y codificado en UTF-8
+
+        console.log(`✅ Archivo generado: ${outputPath}`);
+
+    </script>
+</body>
+
+</html>

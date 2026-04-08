@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <script>
+        // Ejemplos interacción con el DOM
+        // Obtener un elemento por su ID
+        const titulo = document.getElementById('titulo');
+        console.log(titulo);
+        
+        // obtener un elemento con querySelector
+        const parrafo = document.querySelector('.parrafo');
+        console.log(parrafo);
+
+        //obtener todos los elementos con querySelectorAll
+        const items = document.querySelectorAll('.item');
+        console.log(items);
+
+        // añadir texto a un elemento previamente seleccionado
+        parrafo.textContent = 'Este es un nuevo texto para el párrafo.';
+
+        // crear un nuevo elemento y añadirlo al DOM
+        const nuevoElemento = document.createElement('div');
+        nuevoElemento.textContent = 'Soy un nuevo elemento creado con JavaScript.';
+        document.body.appendChild(nuevoElemento);
+
+        // eliminar un elemento del DOM
+        const elementoAEliminar = document.getElementById('elemento-a-eliminar');   
+        if (elementoAEliminar) {
+            elementoAEliminar.remove();
+        }
+
+        // añadir un estilo css a un elemento
+        nuevoElemento.style.color = 'blue';
+
+        // añadir una clase a un elemento
+        nuevoElemento.classList.add('mi-clase');
+
+        // eliminar una clase de un elemento
+        nuevoElemento.classList.remove('mi-clase');
+
+        // añadir un evento a un elemento
+        nuevoElemento.addEventListener('click', () => {
+            alert('¡Has hecho clic en el nuevo elemento!');
+        });
+
+        // modificar un atributo de un elemento
+        nuevoElemento.setAttribute('data-info', 'Información adicional');
+
+        // obtener el valor de un atributo
+        const info = nuevoElemento.getAttribute('data-info');
+        console.log(info);
+
+        // eliminar un atributo de un elemento
+        nuevoElemento.removeAttribute('data-info');
+
+        // recorrer una lista de elementos
+        items.forEach(item => {
+            console.log(item.textContent);
+        });
+
+        // crear un fragmento de documento para mejorar el rendimiento al añadir múltiples elementos (el appendChild en el DOM se realiza una sola vez al final)
+        const fragmento = document.createDocumentFragment();
+        for (let i = 0; i < 5; i++) {
+            const nuevoItem = document.createElement('div');
+            nuevoItem.textContent = `Item ${i + 1}`;
+            fragmento.appendChild(nuevoItem);
+        }
+        document.body.appendChild(fragmento);
+
+        // clonar un elemento
+        const clon = nuevoElemento.cloneNode(true);
+        document.body.appendChild(clon);
+
+        // obtener el padre de un elemento
+        const padre = nuevoElemento.parentNode;
+        console.log(padre);
+
+        // obtener los hijos de un elemento
+        const hijos = padre.childNodes;
+        console.log(hijos); 
+
+        // obtener el siguiente hermano de un elemento
+        const siguienteHermano = nuevoElemento.nextSibling;
+        console.log(siguienteHermano);
+
+        // obtener el hermano anterior de un elemento
+        const hermanoAnterior = nuevoElemento.previousSibling;
+        console.log(hermanoAnterior);
+
+        // obtener el tipo de un nodo
+        const tipoNodo = nuevoElemento.nodeType;
+        console.log(tipoNodo);
+
+        // obtener el nombre de un nodo
+        const nombreNodo = nuevoElemento.nodeName;
+        console.log(nombreNodo);
+
+        // obtener el valor de un nodo
+        const valorNodo = nuevoElemento.nodeValue;
+        console.log(valorNodo);
+
+        // modificar el valor de un nodo
+        nuevoElemento.nodeValue = 'Nuevo valor del nodo';
+        
+
+        // obtener el número de hijos de un elemento
+        const numeroHijos = padre.childElementCount;
+        console.log(numeroHijos);
+
+        // obtener el primer hijo de un elemento
+        const primerHijo = padre.firstChild;
+
+        // obtener el último hijo de un elemento
+        const ultimoHijo = padre.lastChild;
+
+        // obtener el elemento padre de un nodo
+        const elementoPadre = primerHijo.parentNode;
+
+        // obtener el siguiente hermano de un nodo
+        const siguienteHermanoNodo = primerHijo.nextSibling;
+        console.log(siguienteHermanoNodo);
+
+        // obtener el hermano anterior de un nodo
+        const hermanoAnteriorNodo = primerHijo.previousSibling;
+        console.log(hermanoAnteriorNodo);
+
+        // obtener el tipo de un nodo
+        const tipoNodoPrimerHijo = primerHijo.nodeType;
+        console.log(tipoNodoPrimerHijo);
+
+        // obtener el nombre de un nodo
+        const nombreNodoPrimerHijo = primerHijo.nodeName;
+        console.log(nombreNodoPrimerHijo);
+
+        // obtener el valor de un nodo
+        const valorNodoPrimerHijo = primerHijo.nodeValue;
+        console.log(valorNodoPrimerHijo);
+
+        // modificar el valor de un nodo
+        primerHijo.nodeValue = 'Nuevo valor del nodo primer hijo';
+
+        // obtener el número de hijos de un nodo
+        const numeroHijosPrimerHijo = primerHijo.childElementCount;
+        console.log(numeroHijosPrimerHijo);
+
+    </script>
+</body>
+</html>

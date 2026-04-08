@@ -1,6 +1,8 @@
 // inicialización de variables
-const contactos = []
 const tabla = document.getElementsByTagName('tbody')[0]
+
+const contactos = recuperarStorage()
+actualizarLista()
 
 // modelo de contacto
 /*
@@ -44,6 +46,8 @@ function nuevoContacto(tipo = 'n') {
 
     // actualizar la lista de contactos
     actualizarLista()
+
+    guardarStorage()
 }
 
 function borrarContacto(tipo = 'p') {
@@ -56,17 +60,51 @@ function borrarContacto(tipo = 'p') {
     }
     
     actualizarLista()
+
+    guardarStorage()
 }
 
 function borrarContactoSeleccionado() {
     let id = document.getElementById('idcontacto').value
 
-    let indiceABorrar = contactos.findIndex((cliente) => cliente.id == id)
+    let indiceABorrar = contactos.findIndex((contacto) => contacto.id == id)
 
    //borrar elemento del array
    contactos.splice(indiceABorrar,1)
 
    actualizarLista()
+
+   guardarStorage()
+}
+
+function modificarContacto() {
+    const id = document.getElementById('idcontacto').value
+
+    // recoger datos del formulario
+    const nombre = document.getElementById('nombre').value.trim()
+    const telefono = document.getElementById('telefono').value.trim()
+    const email = document.getElementById('email').value.trim()
+    const empresa = document.getElementById('empresa').value.trim()
+
+    // validatión de datos
+    if (nombre === '' || telefono === '' || email === '' || empresa === '') {
+        alert('Por favor, rellena todos los campos')
+        return
+    }
+
+    let indiceAModificar = contactos.findIndex((contacto) => contacto.id == id)
+
+    // modificar el contacto en el array
+    contactos[indiceAModificar].nombre = nombre
+    contactos[indiceAModificar].telefono = telefono
+    contactos[indiceAModificar].email = email
+    contactos[indiceAModificar].empresa = empresa
+
+    // actualizar la lista de contactos
+    actualizarLista()
+
+    guardarStorage()
+
 }
 
 function seleccionarContacto(id) {
@@ -79,6 +117,18 @@ function seleccionarContacto(id) {
     document.getElementById('empresa').value = contacto.empresa
 
     document.getElementById('idcontacto').value = contacto.id
+}
+
+function guardarStorage() {
+    //guardar contactos en el storage
+    localStorage.setItem('contactos', JSON.stringify(contactos))
+}
+
+function recuperarStorage() {
+    //recuperar contactos en el storage
+    return localStorage.getItem('contactos') 
+    ? JSON.parse(localStorage.getItem('contactos'))
+    : []
 }
 
 function actualizarLista() {

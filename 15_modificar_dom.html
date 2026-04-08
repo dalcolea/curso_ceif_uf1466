@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="titulo">Título inicial</h1>
+    <button>cambiar texto</button>
+
+    <script>
+        const elem = document.getElementById('titulo')
+        console.log(elem)
+
+        //activar boton
+        const boton = document.getElementsByTagName('button')[0]
+
+        boton.addEventListener('click', function() {
+            cambiarTexto('Texto modificado')
+        })
+
+        boton.addEventListener('dblclick', cambiarPosicion)
+
+        function cambiarTexto(texto) {
+            elem.textContent = texto
+        }
+
+        function cambiarPosicion() {
+            elem.style.position='relative'
+            elem.style.bottom = '-200px'
+        }
+    </script>
+</body>
+</html>

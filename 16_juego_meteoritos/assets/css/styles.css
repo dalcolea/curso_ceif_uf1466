@@ -1,0 +1,47 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {text-align: center; margin-bottom: 1em;}
+button{display:block; margin:auto;padding:5px}
+h4 {text-align: center; margin: 20px}
+
+#tablero {
+    width: 600px;
+    height: 500px;
+    border: 10px solid red;
+    background-color: black;
+    margin:20px auto;
+    overflow: hidden; /* para ocultar los meteoritos que se salen del tablero */
+    position: relative; /* para colocar los meteoritos en posición absoluta */
+}
+
+.nave {
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    position: absolute;
+    left:275px;
+    bottom:5px;
+    z-index:999
+}
+
+.meteorito {
+    width: 30px;
+    height: 30px;
+    background-color: gray;
+    position: absolute;
+    border-radius: 50%;
+    z-index:999
+}
+
+.estrellita {
+    width: 2px;
+    height: 2px;
+    background-color: yellow;
+    position:absolute;
+    z-index:99
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //teniendo en cuenta que la probabilidad de que salga un determinado número al tirar 6 dados es de 1/46656 (1/7776 si se considera cualquier número)
+
+        //se pide simular sucesivas tiradas de dados guardando, en cada una de ellas, los resultados obtenidos en una matriz
+
+        // al alcanzar el número de tiradas donde, supuestamente, deberíamos obtener seis dados iguales, se detendrá el juego y se mostrará cuantas veces hemos tenido que tirar para conseguir un pleno en cada número y el número de veces que lo hemos conseguido además del promedio de victorias
+
+        //mejora: hacer que el ejercicio funcione con cualquier numero de dados
+
+        //capicci!
+
+        const dados = 6 //numero de dados a utilizar
+        const numTiradas = 6 ** dados //tiradas a jugar
+        let tirada = 1 //contador de tiradas
+        let ganadas = 0 // contador de partidas ganadas
+        const tiradasGanadoras = {} //objeto vacio para guardar cuantas veces se consiguen 6 números iguales
+
+        //función generadora de partidas (array con el valor de los seis dados)
+        const jugarPartidas = () => { 
+            let array = []
+
+            //generamos 6 números random y los guardamos en el array
+            for (let c=0; c<=dados-1; c++) {
+                array[c] = Math.floor(Math.random() * dados) + 1
+            }
+
+            //console.log('tirada ', tirada, ' = ', array )
+
+            return array //retornamos el array con los 6 randoms
+            
+        }
+
+        //función para comprobar si hay seis números iguales
+        function comprobarIguales(array) {
+            //comprobar cuantas veces aparece un valor concreto en el array devuelto al jugar cada partida
+            for (let c=1; c<=dados; c++) {
+                let iguales = array.filter(valor => valor == c) //tambien se podría utilizar every, con filter creamos un nuevo array con los elemetos que cumplan la condición indicada (en este caso que el valor de cada elemento sea igual al valor del indice del for (que va de 1 a 6)). Con every obtendriamos directamente un true o un false
+
+                //si el contador de elementos del array es 6 es que todos los numericos son iguales (si utilizaramos every en el paso anterior preguntariamos directamente por el true)
+                if (iguales.length == dados) {
+                    //guardamos la combinacion en una matriz de objetos (si es la primera vez que guardamos el número informaremos 1, en sucesivas veces incrementaramos este valor)
+                    console.log('iguales ', iguales, ' en tirada ', tirada )
+
+                    tiradasGanadoras[c] = isNaN(tiradasGanadoras[c]) ? 1 : tiradasGanadoras[c] += 1
+
+                    ganadas++ //sumamos uno al contador de partidas ganadas
+
+                    break //salir del bucle
+                }
+            }
+
+        }
+
+        // realizar las tiradas indicadas en la varaible numTiradas y comprobar si hay seis iguales
+        for (let t = 1; t <= numTiradas; t++) {
+            let array = jugarPartidas()
+
+            comprobarIguales(array)
+
+            tirada++ //incrementamos el contador de tiradas
+        }
+
+
+        //mostramos las estadísticas al finalizar todas las tiradas
+        console.log('array ganadoras :', tiradasGanadoras)
+
+        //mostrar promedio 
+        console.log('Partidas jugadas: ', numTiradas)
+        console.log('Partidas ganadas: ', ganadas)
+        console.log('Promedio ganadas/jugadas: ', ganadas / numTiradas)
+    </script>
+</body>
+</html>
