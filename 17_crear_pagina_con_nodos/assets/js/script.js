@@ -88,3 +88,5 @@ dianoche.addEventListener('click', function() {
 })
 
 document.body.appendChild(dianoche)
+
+// Implementar sistemas de votación a través de 5 estrellas por cada card (alojamiento) al pulsar en la valoracion almacenar en array el numero de alojamiento y star pulsada.
