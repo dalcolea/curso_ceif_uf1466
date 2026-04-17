@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Poligono {
+            //atributos privados
+            #lados
+            #longitudLado
+            #apotema 
+            #altura 
+
+            //constructor
+            constructor(lados, longitudLado, apotema=0, altura=0) {
+             
+                //aunque es mejor validar en los setters, vamos a realizar la validación en el propio constructor
+                if (lados < 3 || longitudLado <= 0 || apotema < 0 || altura < 0) {
+                    throw ('lados deben ser minimo 3. longitud lado no puede ser cero y apotema y altura no puedens ser menores que cero')
+                }
+
+                this.#lados = lados
+                this.#longitudLado = longitudLado
+                this.#apotema = apotema
+                this.#altura = altura
+            }
+
+            //métodos públicos
+            perimetro() {
+                return this.#lados * this.#longitudLado
+            }
+
+            area() {
+                if (this.#apotema) {
+                    //perimetro * apotema / 2
+                    return (this.#lados * this.#longitudLado * this.#apotema) / 2
+                } else {
+                    throw ('falta el apotema')
+                }
+            }
+
+            tipo() {
+                if (this.#altura) {
+                    return 'prisma'
+                } else {
+                    switch(this.#lados) {
+                        case 3:
+                            return 'triangulo'
+                        case 4:
+                            return 'cuadrado'
+                        case 5:
+                            return 'pentágono'
+                        case 6:
+                            return 'hexágono'
+                        case 7:
+                            return 'heptágono'
+                        case 8:
+                            return 'octógono'
+                        case 9:
+                            return 'eneágono'
+                        default:
+                            throw ('Figura no contemplada')
+                    }
+                }
+            }
+
+            volumen() {
+                if (this.#altura) {
+                    return this.area() * this.#altura
+                } else {
+                    throw ('sin altura no se puede calcular volumen')
+                }
+            }
+
+            resumen() {
+                return(`Parámetros de la figura:<br>Lados: ${this.#lados}<br>longitud lado: ${this.#longitudLado}<br>Apotema: ${this.#apotema}<br>Altura: ${this.#altura}<br>Perimetro ${this.perimetro()}<br>Area ${this.area()}<br>Tipo ${this.tipo()}<br>Volumen ${this.volumen()}<br>---------------------------<br>`)
+            }
+           
+        }
+
+        //instanciación con contol de errores
+
+        try {
+            const poligono = new Poligono(4, 10 ,5, 10)
+            document.write(poligono.resumen())
+        } catch (e) {
+            alert(e)
+        }
+
+    </script>
+</body>
+</html>

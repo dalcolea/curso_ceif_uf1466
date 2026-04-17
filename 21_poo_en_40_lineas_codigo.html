@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //LA ORIENTACION A OBJETOS EN 40 LINEAS DE CÓDIGO!
+
+        //ejemplos de encapsulamiento, visibilidad, herencia, polimorfismo y sobreescritura de métodos
+
+        //el encapsulamiento es la agrupación de atributos y metodos dentro de una clase cada uno de ellos con la visibilidad correcta
+
+        //superclase Guerrero de la cual herederán dos subclases más abajo
+        class Guerrero {
+            // atributos protegidos (visibles solo dentro de la clase y las clases que heredan de ésta). ESto es un ejemplo de visibilidad
+            _tipo
+            _arma
+
+            constructor(tipo, arma) {
+                //asignacion directa
+                this._tipo = tipo 
+                this._arma = arma
+            }
+
+            //método público (se puede acceder a el desde fuera de la clase -otro ejemplo de visibilidad-)
+            atacar() {
+                document.write('¿se ejecutará alguna vez este método de la superclase?<br>')
+            }
+        }
+
+        //ejemplos de herencia
+        class GuerreroVikingo extends Guerrero {
+            //atributos particulares de vikingo (privados -visibles solo dentro de esta clase-)
+            #tribu
+
+            constructor(tipo,arma, tribu) {
+                //delegación en el constructor de la superclase de los atributos comunes
+                super(tipo, arma)
+                //asignacion directa del atributo particular de la subclase
+                this.#tribu = tribu
+            }
+
+            //este método esta sobreescribiendo el de la superclase. 
+            atacar() {
+                //si queremos que también se ejcute el método atacar de la superclase utilizaríamos (en este caso estaríamos ante una ampliación de método en vez de una sobreescritura)
+                super.atacar()
+
+                document.write(`ataque del guerrero vikingo de la tribu ${this.#tribu} con ${this._arma}<br>`)
+            }
+
+            //método especial setter para poder modificar el atributo tribu desde fuera de la clase (recordemos que este atributo es privado y no se puede modificar directamente fuera de la clase)
+            setTribu(tribu) {
+                this.#tribu = tribu
+            }
+        }
+
+        class GuerreroRomano extends Guerrero {
+            //atributos particulares de romano (privados)
+            #legion
+
+            constructor(tipo,arma, legion) {
+                //delegación en el constructor de la superclase de los atributos comunes
+                super(tipo, arma)
+
+                //asignacion directa del atributo particular de la subclase
+                this.#legion = legion
+            }
+
+            atacar() {
+                document.write(`ataque del guerrero romano de la legion ${this.#legion} con ${this._arma}<br>`)
+            }
+        }
+
+        // instanciar objetos
+        const vikingo = new GuerreroVikingo('vikingo', 'hacha', 'normandos')
+        vikingo.atacar() //ejemplo de polimorfismo
+
+        const romano = new GuerreroRomano('romano', 'lanza', 'legio X gemina')
+        romano.atacar() //ejemplo de polimorfismo
+
+        //sin oop tendríamos una funcion atacarVikingo() y otra atacarRomano() y para ejecutar una u otra tendríamos que hacer algo similar a:
+        
+        // if (tipo == 'vikingo') {atacarVikingo()} else {atacarRomano()}
+
+        //en orientacion a objetos el hecho de instanciar uno u otro guerrero hace que se ejecute la función atacar del vikingo o del romano (según el objeto instanciado). A esto se le conoce como polimorfismo o acoplamiento dinámico o acoplamiento en tiempo de ejecución
+
+        //¿Podemos modificar el atributo de alguno de nuestros dos objetos creados (por ejemplo la tribu)?
+
+        //vikingo.#tribu = 'olafos'
+
+        //pues vemos que no porque el atributo lo hemos definido como privado y no se puede utilizar fuera de la clase
+
+        //para acceder a el utilizaremos el método público que nos permite cambiar su valor
+        vikingo.setTribu('olafos')
+        vikingo.atacar() 
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Coche {
+            //atributos privados
+            #marca
+            #modelo
+            #velocidad 
+            #encendido 
+
+            //constructor
+            constructor(marca, modelo) {
+                this.#marca = marca
+                this.#modelo = modelo
+                this.#velocidad = 0 
+                this.#encendido = false
+            }
+
+            //métodos públicos
+            encender() {
+                this.#encendido = true
+            }
+
+            apagar() {
+                this.#encendido = false
+                this.#velocidad = 0
+            }
+
+            acelerar(cantidad) {
+                if (this.#encendido) {
+                    this.#velocidad += cantidad
+                } else {
+                    alert('coche no encendido')
+                }
+            }
+
+            frenar(cantidad) {
+                if (this.#encendido) {
+                    this.#velocidad -= cantidad 
+
+                    if (this.#velocidad < 0) this.#velocidad = 0
+                } else {
+                    alert('coche no encendido')
+                }
+            }
+
+            estado() {
+                return(`Estado del vehículo:<br>Marca: ${this.#marca}<br>Modelo: ${this.#modelo}<br>Encendido: ${this.#encendido}<br>Velocidad: ${this.#velocidad}<br>---------------------------<br>`)
+            }
+
+
+        }
+
+        //instanciación
+
+        const coche = new Coche('Cadillac', 'Escalade')
+        document.write(coche.estado())
+
+        coche.encender()
+        coche.acelerar(100)
+        document.write(coche.estado())
+
+    </script>
+</body>
+</html>

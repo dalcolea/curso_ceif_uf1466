@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Estudiante {
+            //atributos privados
+            #nombre
+            #notas
+            #asistencia 
+
+            //constructor
+            constructor(nombre, notas, asistencia) {
+             
+                //aunque es mejor validar en los setters, vamos a realizar la validación en el propio constructor
+                if (!nombre.trim()) {
+                    throw('Nombre obligatorio')
+                }
+                if (!asistencia || asistencia < 0 || asistencia > 100) {
+                    throw('Asistencia debe estar entre 0 y 100')
+                }
+                
+                notas.forEach(nota => {
+                    console.log('nota: ', nota)
+                    if (nota < 0 || nota > 10) {
+                        throw('todas las notas deben estar entre 0 y 10')
+                    }
+                })
+                
+                this.#nombre = nombre
+                this.#notas = notas
+                this.#asistencia = asistencia
+            }
+
+            //métodos públicos
+            agregarNota(nota) {
+                if (nota < 0 || nota > 10) {
+                    throw('la nota debe estar entre 0 y 10')
+                }
+
+                this.#notas.push(nota)
+            }
+
+            promedio() {
+                let promedio = this.#notas.reduce((total, nota) => total + nota, 0) / this.#notas.length
+
+                return promedio.toFixed(2)
+            }
+
+            aprobo() {
+                //aprobo si promedio >= 5 y asistencia >= 75
+                if (this.promedio() >= 5 && this.#asistencia >= 75) {
+                    return 'Aprobado'
+                } else {
+                    return 'Reprobado'
+                }
+            }
+
+            mejorNota() {
+                //retornar la nota más alta del array
+                return Math.max(...this.#notas)
+            }
+
+            resumen() {
+                return(`Datos del alumno:<br>Nombre: ${this.#nombre}<br>Notas:: ${this.#notas}<br>Asistencia: ${this.#asistencia}%<br>Promedio: ${this.promedio()}<br>Aprobó? ${this.aprobo()}<br>Mejor nota: ${this.mejorNota()}<br>---------------------------<br>`)
+            }
+           
+        }
+
+        //instanciación con contol de errores
+
+        try {
+            const estudiante = new Estudiante('O-Ren Ishii', [2,4,5,8,6,9] ,90)
+            document.write(estudiante.resumen())
+
+            estudiante.agregarNota(10)
+            document.write(estudiante.resumen())
+        } catch (e) {
+            alert(e)
+        }
+
+    </script>
+</body>
+</html>

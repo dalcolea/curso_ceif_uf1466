@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Tarjeta {
+            //atributos privados
+            #titular
+            #saldo
+            #limite 
+            #activa 
+
+            //constructor
+            constructor(titular, limite) {
+                this.#titular = titular
+                this.#saldo = 0
+                this.#limite = limite
+                this.#activa = false
+            }
+
+            //métodos públicos
+            activar() {
+                this.#activa = true
+            }
+
+            desactivar() {
+                this.#activa = false
+            }
+
+            comprar(cantidad) {
+                //compras sin superar el limite
+                if (this.#activa) {
+                    if (this.#limite - this.#saldo >= cantidad) {
+                        this.#saldo += cantidad
+                    } else {
+                        alert(`saldo ${this.#saldo} insuficiente`)
+                    }
+                } else {
+                    alert('tarjeta no activa')
+                }
+            }
+
+            pagar(cantidad) {
+                //reduce la deuda y, si hay excedente,se incrementa el limite
+                if (this.#activa) {
+                    this.#saldo -= cantidad 
+
+                    if (this.#saldo < 0) {
+                        this.#limite += Math.abs(this.#saldo)
+                        this.#saldo = 0
+                    }
+                } else {
+                    alert('tarjeta no activa')
+                }
+            }
+
+            disponible() {
+                return this.#limite - this.#saldo
+            }
+
+            estado() {
+                return(`Estado de la tarjeta:<br>Titular: ${this.#titular}<br>Límite: ${this.#limite}<br>Activa: ${this.#activa}<br>Saldo: ${this.#saldo}<br>---------------------------<br>`)
+            }
+
+
+        }
+
+        //instanciación
+
+        const tarjeta = new Tarjeta('Arch Stanton', 6000)
+        document.write(tarjeta.estado())
+
+        tarjeta.activar()
+        tarjeta.comprar(1000)
+        document.write(tarjeta.estado())
+
+        tarjeta.comprar(4000)
+        document.write(tarjeta.estado())
+
+        tarjeta.pagar(8000)
+        document.write(tarjeta.estado())
+
+    </script>
+</body>
+</html>
